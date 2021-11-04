@@ -6,7 +6,17 @@
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+export interface CoordinatesInput {
+  latitude: number;
+  longitude: number;
+}
 
+export interface HouseInput {
+  address: string;
+  bedrooms: number;
+  coordinates: CoordinatesInput;
+  image: string;
+}
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

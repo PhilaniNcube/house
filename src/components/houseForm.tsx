@@ -1,14 +1,14 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, gql } from "@apollo/client";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import Link from "next/link";
 // import { Image } from "cloudinary-react";
 import { SearchBox } from "./searchBox";
-// import {
-//   CreateHouseMutation,
-//   CreateHouseMutationVariables,
-// } from "src/generated/CreateHouseMutation";
+import {
+  CreateHouseMutation,
+  CreateHouseMutationVariables,
+} from "src/generated/CreateHouseMutation";
 // import {
 //   UpdateHouseMutation,
 //   UpdateHouseMutationVariables,
@@ -17,13 +17,20 @@ import { CreateSignatureMutation } from "src/generated/CreateSignatureMutation";
 
 const SIGNATURE_MUTATION = gql`
 mutation CreateSignatureMutation {
-
-    createImageSignature {
+createImageSignature {
         signature
         timestamp
     }
 }
-`
+`;
+
+const CREATE_HOUSE_MUTATION = gql`
+  mutation CreateHouseMutation($input: HouseInput!) {
+    createHouse(input: $input) {
+      id
+    }
+  }
+`;
 
 interface IUploadImageResponse {
     secure_url: string
